@@ -3,6 +3,7 @@ package com.cyt.server.impl;
 import com.cyt.constant.MessageConstant;
 import com.cyt.constant.PasswordConstant;
 import com.cyt.constant.StatusConstant;
+import com.cyt.context.BaseContest;
 import com.cyt.dto.EmployeeDTO;
 import com.cyt.dto.EmployeeLoginDTO;
 import com.cyt.entity.Employee;
@@ -80,8 +81,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateTime(LocalDateTime.now());
 
         //设置当前记录创建人id和修改人id
-        employee.setCreateUser(10L);
-        employee.setUpdateUser(10L);
+        employee.setCreateUser(BaseContest.getCurrentId());
+        employee.setUpdateUser(BaseContest.getCurrentId());
 
         employeeMapper.insert(employee);
 
