@@ -2,6 +2,7 @@ package com.cyt.controller.admin;
 
 
 import com.cyt.constant.JwtClaimsConstant;
+import com.cyt.dto.EmployeeDTO;
 import com.cyt.dto.EmployeeLoginDTO;
 import com.cyt.entity.Employee;
 import com.cyt.properties.JwtProperties;
@@ -9,6 +10,7 @@ import com.cyt.result.Result;
 import com.cyt.server.EmployeeService;
 import com.cyt.utils.JwtUtil;
 import com.cyt.vo.EmployeeLoginVO;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,6 +71,19 @@ public class EmployeeController {
      */
     @PostMapping("/logout")
     public Result<String> logout() {
+        return Result.success();
+    }
+
+    /**
+     * 新增员工
+     * @param employeeDTO
+     * @return
+     */
+    @PostMapping
+    @ApiOperation("新增员工")
+    public Result save(@RequestBody EmployeeDTO employeeDTO){
+        log.info("新增员工：{}",employeeDTO);
+        employeeService.save(employeeDTO);
         return Result.success();
     }
 

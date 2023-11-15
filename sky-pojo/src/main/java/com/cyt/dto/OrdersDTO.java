@@ -1,6 +1,7 @@
 package com.cyt.dto;
 
-import com.sky.entity.OrderDetail;
+
+import com.cyt.entity.OrderDetail;
 import lombok.Data;
 
 import java.io.Serializable;

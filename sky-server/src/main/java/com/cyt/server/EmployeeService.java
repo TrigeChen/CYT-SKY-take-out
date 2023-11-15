@@ -1,6 +1,7 @@
 package com.cyt.server;
 
 
+import com.cyt.dto.EmployeeDTO;
 import com.cyt.dto.EmployeeLoginDTO;
 import com.cyt.entity.Employee;
 
@@ -13,4 +14,5 @@ public interface EmployeeService {
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
+    void save(EmployeeDTO employeeDTO);
 }

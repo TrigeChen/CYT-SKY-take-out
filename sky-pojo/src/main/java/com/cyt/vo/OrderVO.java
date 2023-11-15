@@ -1,7 +1,7 @@
 package com.cyt.vo;
 
-import com.sky.entity.OrderDetail;
-import com.sky.entity.Orders;
+import com.cyt.entity.OrderDetail;
+import com.cyt.entity.Orders;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

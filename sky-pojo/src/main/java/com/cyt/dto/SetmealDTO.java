@@ -1,6 +1,7 @@
 package com.cyt.dto;
 
-import com.sky.entity.SetmealDish;
+
+import com.cyt.entity.SetmealDish;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -1,6 +1,7 @@
 package com.cyt.vo;
 
-import com.sky.entity.SetmealDish;
+
+import com.cyt.entity.SetmealDish;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
