@@ -6,19 +6,24 @@ import com.cyt.constant.StatusConstant;
 import com.cyt.context.BaseContest;
 import com.cyt.dto.EmployeeDTO;
 import com.cyt.dto.EmployeeLoginDTO;
+import com.cyt.dto.EmployeePageQueryDTO;
 import com.cyt.entity.Employee;
 import com.cyt.exception.AccountLockedException;
 import com.cyt.exception.AccountNotFoundException;
 import com.cyt.exception.PasswordErrorException;
 import com.cyt.mapper.EmployeeMapper;
+import com.cyt.result.PageResult;
 import com.cyt.server.EmployeeService;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -86,6 +91,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeMapper.insert(employee);
 
+    }
+
+    /**
+     * 分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
+
+    public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO){
+        // select * from employee limit 0,10
+        //开始分页查询
+        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+
+        Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
+        Long total = page.getTotal();
+        List<Employee> records = page.getResult();
+
+        return new PageResult(total,records);
     }
 
 }

@@ -4,8 +4,10 @@ package com.cyt.controller.admin;
 import com.cyt.constant.JwtClaimsConstant;
 import com.cyt.dto.EmployeeDTO;
 import com.cyt.dto.EmployeeLoginDTO;
+import com.cyt.dto.EmployeePageQueryDTO;
 import com.cyt.entity.Employee;
 import com.cyt.properties.JwtProperties;
+import com.cyt.result.PageResult;
 import com.cyt.result.Result;
 import com.cyt.server.EmployeeService;
 import com.cyt.utils.JwtUtil;
@@ -13,10 +15,7 @@ import com.cyt.vo.EmployeeLoginVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +84,21 @@ public class EmployeeController {
         log.info("新增员工：{}",employeeDTO);
         employeeService.save(employeeDTO);
         return Result.success();
+    }
+
+    //传输数据合格不是json格式就不再需要@RequestBody注解
+
+    /**
+     * 员工分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
+    @GetMapping("/page")
+    @ApiOperation("员工分页查询")
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+        log.info("员工分页查询，参数为：{}",employeePageQueryDTO);
+        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
+        return Result.success(pageResult);
     }
 
 }
