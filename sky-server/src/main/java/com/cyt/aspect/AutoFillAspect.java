@@ -3,10 +3,9 @@ package com.cyt.aspect;
 import com.cyt.annotation.AutoFill;
 import com.cyt.constant.AutoFillConstant;
 import com.cyt.context.BaseContext;
-import com.cyt.enumeration.OptertionType;
+import com.cyt.enumeration.OperationType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -43,7 +42,7 @@ public class AutoFillAspect {
         //获取当前被拦截的方法上的数据库操作类型
         MethodSignature signature = (MethodSignature) joinPoint.getSignature(); //方法签名
         AutoFill autoFill = signature.getMethod().getAnnotation(AutoFill.class); //获得方法上的注解对象
-        OptertionType optertionType = autoFill.value(); //获得数据库操作类型
+        OperationType operationType = autoFill.value(); //获得数据库操作类型
 
         //获取到当前被拦截的方法的参数--实体对象
         Object[] args = joinPoint.getArgs();
@@ -58,7 +57,7 @@ public class AutoFillAspect {
         Long currentId = BaseContext.getCurrentId();
 
         //根据当前不同的操作类型，为对应的属性通过反射来赋值
-        if(optertionType == OptertionType.INSERT){
+        if(operationType == OperationType.INSERT){
             try {
                 Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME,LocalDateTime.class);
                 Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER,Long.class);
@@ -72,7 +71,7 @@ public class AutoFillAspect {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        } else if (optertionType == OptertionType.UPDATE) {
+        } else if (operationType == OperationType.UPDATE) {
             try {
                 Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME,LocalDateTime.class);
                 Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER,Long.class);

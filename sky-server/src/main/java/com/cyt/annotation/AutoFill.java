@@ -1,6 +1,6 @@
 package com.cyt.annotation;
 
-import com.cyt.enumeration.OptertionType;
+import com.cyt.enumeration.OperationType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,5 +20,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoFill {
     //数据库操作类型：UPDATE INSERT
-    OptertionType value();
+    OperationType value();
 }

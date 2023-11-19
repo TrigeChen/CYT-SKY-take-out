@@ -9,7 +9,7 @@ package com.cyt.enumeration;
  * @Create 2023/11/14 13:12
  * @Version 1.0
  */
-public enum OptertionType {
+public enum OperationType {
     /**
      * 更新操作
      */

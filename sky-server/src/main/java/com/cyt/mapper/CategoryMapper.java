@@ -3,7 +3,7 @@ package com.cyt.mapper;
 import com.cyt.annotation.AutoFill;
 import com.cyt.dto.CategoryPageQueryDTO;
 import com.cyt.entity.Category;
-import com.cyt.enumeration.OptertionType;
+import com.cyt.enumeration.OperationType;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -30,7 +30,7 @@ public interface CategoryMapper {
     @Insert("insert into category(type,name,sort,status,create_time,create_time,update_time,create_user,update_user)" +
             "values " +
             "(#{type},#{name},#{sort},#{status},#{createTime},#{createTime},#{updateTime},#{createUser},#{updateUser})")
-    @AutoFill(value = OptertionType.INSERT)
+    @AutoFill(value = OperationType.INSERT)
     void insert(Category category);
 
     /**
@@ -52,7 +52,7 @@ public interface CategoryMapper {
      * 根据id修改分类
      * @param category
      */
-    @AutoFill(value = OptertionType.UPDATE)
+    @AutoFill(value = OperationType.UPDATE)
     void update(Category category);
 
     /**
