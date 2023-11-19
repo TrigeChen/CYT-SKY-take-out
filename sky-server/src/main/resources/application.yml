@@ -8,10 +8,10 @@ spring:
     allow-circular-references: true
   datasource:
     druid:
-      driver-class-name: ${sky.datasource.driver-class-name}
-      url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: ${sky.datasource.username}
-      password: ${sky.datasource.password}
+      driver-class-name: ${cyt.datasource.driver-class-name}
+      url: jdbc:mysql://${cyt.datasource.host}:${cyt.datasource.port}/${cyt.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${cyt.datasource.username}
+      password: ${cyt.datasource.password}
 
 mybatis:
   #mapper配置文件
@@ -24,12 +24,12 @@ mybatis:
 logging:
   level:
     com:
-      sky:
+      cyt:
         mapper: debug
         service: info
         controller: info
 
-sky:
+cyt:
   jwt:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
