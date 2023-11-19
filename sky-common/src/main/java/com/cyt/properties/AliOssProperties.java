@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "cyt.aliyun")
+@ConfigurationProperties(prefix = "cyt.aliyah")
 @Data
 public class AliOssProperties {
 

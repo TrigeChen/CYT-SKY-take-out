@@ -38,8 +38,8 @@ cyt:
     # 设置前端传递过来的令牌名称
     admin-token-name: token
 
-  aliyun:
-    endpoint: ${cyt.aliyun.endpoint}
-    access-key-id: ${cyt.aliyun.access-key-id}}
-    access-key-secret: ${cyt.aliyun.access-key-secret}
-    bucket-name: ${cyt.aliyun.bucket-name}
+  aliyah:
+    endpoint: ${cyt.aliyah.endpoint}
+    access-key-id: ${cyt.aliyah.access-key-id}}
+    access-key-secret: ${cyt.aliyah.access-key-secret}
+    bucket-name: ${cyt.aliyah.bucket-name}
