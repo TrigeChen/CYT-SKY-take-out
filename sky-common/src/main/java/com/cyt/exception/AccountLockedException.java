@@ -1,7 +1,5 @@
 package com.cyt.exception;
 
-import com.cyt.context.BaseContest;
-
 /**
  * ClassName: AccountLockedException
  * Package: com.cyt.exception

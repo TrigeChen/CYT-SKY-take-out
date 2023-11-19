@@ -12,6 +12,7 @@ import com.cyt.result.Result;
 import com.cyt.server.EmployeeService;
 import com.cyt.utils.JwtUtil;
 import com.cyt.vo.EmployeeLoginVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/admin/employee")
+@Api(tags = "员工相关接口")
 @Slf4j
 public class EmployeeController {
 

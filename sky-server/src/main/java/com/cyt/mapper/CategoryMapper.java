@@ -1,0 +1,64 @@
+package com.cyt.mapper;
+
+import com.cyt.annotation.AutoFill;
+import com.cyt.dto.CategoryPageQueryDTO;
+import com.cyt.entity.Category;
+import com.cyt.enumeration.OptertionType;
+import com.github.pagehelper.Page;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+/**
+ * ClassName: CategoryMapper
+ * Package: com.cyt.mapper
+ * Description:
+ *
+ * @Author CYT
+ * @Create 2023/11/19 13:55
+ * @Version 1.0
+ */
+@Mapper
+public interface CategoryMapper {
+    /**
+     * 插入数据
+     * @param category
+     */
+
+    @Insert("insert into category(type,name,sort,status,create_time,create_time,update_time,create_user,update_user)" +
+            "values " +
+            "(#{type},#{name},#{sort},#{status},#{createTime},#{createTime},#{updateTime},#{createUser},#{updateUser})")
+    @AutoFill(value = OptertionType.INSERT)
+    void insert(Category category);
+
+    /**
+     * 分页查询
+     * @param categoryPageQueryDTO
+     * @return
+     */
+
+    Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 根据id删除分类
+     * @param id
+     */
+    @Delete("delete from category where id = #{id}")
+    void deletById(Long id);
+
+    /**
+     * 根据id修改分类
+     * @param category
+     */
+    @AutoFill(value = OptertionType.UPDATE)
+    void update(Category category);
+
+    /**
+     * 根据类型查询分类
+     * @param type
+     * @return
+     */
+    List<Category> list(Integer type);
+}

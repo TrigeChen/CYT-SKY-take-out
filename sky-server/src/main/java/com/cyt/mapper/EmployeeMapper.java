@@ -1,8 +1,10 @@
 package com.cyt.mapper;
 
 
+import com.cyt.annotation.AutoFill;
 import com.cyt.dto.EmployeePageQueryDTO;
 import com.cyt.entity.Employee;
+import com.cyt.enumeration.OptertionType;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,6 +30,7 @@ public interface EmployeeMapper {
             "values" +
             "(#{name},#{username}, #{password}, #{phone}, #{sex}, #{idNumber}, " +
             "#{createTime}, #{updateTime}, #{createUser}, #{updateUser})")
+    @AutoFill(value = OptertionType.INSERT)
     void insert(Employee employee);
 
     /**
@@ -40,6 +43,7 @@ public interface EmployeeMapper {
     /**
      * 根据主键动态修改属性
      */
+    @AutoFill(value = OptertionType.UPDATE)
     void updata(Employee employee);
 
     /**
